@@ -28,6 +28,23 @@ pokemons.forEach(function(xalk){
 })
 
 
+const filterList = new Set()
+
+pokemons.forEach((item) =>{
+   item.type.forEach((type) => {
+      filterList.add(type)
+   })
+})
+
+filterList.forEach((item) => {
+   var newOption = document.createElement('option')
+
+   newOption.value = item
+   newOption.textContent = item
+
+   elSelect.appendChild(newOption)
+})
+
 elSelect.addEventListener('change', function(evt){
    evt.preventDefault()
    var elSelVal = elSelect.value
@@ -67,6 +84,54 @@ elSelect.addEventListener('change', function(evt){
 
 })
 })
+
+
+const elModeBtn = document.querySelector('.js-mode')
+var theme = false;
+
+elModeBtn.addEventListener('click', function(){
+   console.log((theme = !theme));
+   window.localStorage.setItem('theme', theme ? 'dark': 'light')
+   changeThem ()
+})
+
+function changeThem () {
+   if(window.localStorage.getItem('theme') == 'dark'){
+      document.body.style.backgroundColor ='#333'
+      elModeBtn.textContent = 'Light'
+      elModeBtn.setAttribute('class', 'btn btn-light')
+   }else{
+      document.body.style.backgroundColor ='#fff'
+      elModeBtn.textContent = 'Dark'
+      elModeBtn.setAttribute('class', 'btn btn-dark')
+   }
+}
+changeThem()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

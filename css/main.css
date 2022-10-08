@@ -7,9 +7,6 @@
 .box{
    text-align: center;
 }
-body{
-   background-color: blueviolet;
-}
 .js-list{
    display: flex;
    align-items: center;
